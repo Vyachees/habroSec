@@ -21,22 +21,22 @@ public class AdminController {
     }
 
     @PostMapping("/admin")
-    public String  deleteUser(@RequestParam(required = true, defaultValue = "" ) Long userId,
-                              @RequestParam(required = true, defaultValue = "" ) String action,
-                              @RequestParam(required = false, defaultValue = "" ) String newUserName) {
-        if (action.equals("delete")){
+    public String deleteUser(@RequestParam(required = true, defaultValue = "") Long userId,
+                             @RequestParam(required = true, defaultValue = "") String action,
+                             @RequestParam(required = false, defaultValue = "") String newUserName) {
+        if (action.equals("delete")) {
             userService.deleteUser(userId);
         }
 
-        if (action.equals("changelogin")){
-            userService.changeUser(userId,newUserName);
+        if (action.equals("changelogin")) {
+            userService.changeUser(userId, newUserName);
         }
 
         return "redirect:/admin";
     }
 
     @GetMapping("/admin/gt/{userId}")
-    public String  gtUser(@PathVariable("userId") Long userId, Model model) {
+    public String gtUser(@PathVariable("userId") Long userId, Model model) {
         model.addAttribute("allUsers", userService.usergtList(userId));
         return "admin";
     }

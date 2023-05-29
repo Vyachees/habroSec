@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .permitAll()
                 .logoutSuccessUrl("/")
-;
+        ;
     }
 
     @Autowired

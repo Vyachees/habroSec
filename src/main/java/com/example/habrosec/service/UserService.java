@@ -5,7 +5,6 @@ import com.example.habrosec.entity.User;
 import com.example.habrosec.repository.RoleRepository;
 import com.example.habrosec.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -71,7 +70,7 @@ public class UserService implements UserDetailsService {
         return false;
     }
 
-    public boolean changeUser(Long userId,String newUserName) {
+    public boolean changeUser(Long userId, String newUserName) {
         if (userRepository.findById(userId).isPresent()) {
             User user = userRepository.findById(userId).get();
             user.setUsername(newUserName);
